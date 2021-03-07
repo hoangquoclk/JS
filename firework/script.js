@@ -116,7 +116,7 @@ const store = {
 	state: {
 		// will be unpaused in init()
 		paused: true,
-		soundEnabled: false,
+		soundEnabled: true,
 		menuOpen: false,
 		openHelpTopic: null,
 		fullscreen: isFullscreen(),
@@ -464,7 +464,7 @@ function getConfigFromDOM() {
 		shell: appNodes.shellType.value,
 		size: appNodes.shellSize.value,
 		autoLaunch: appNodes.autoLaunch.checked,
-		finaleMode: appNodes.finaleMode.checked,
+		finaleMode: appNodes.finaleMode.checked, // muốn chỉnh lại được thì tìm final thứ nhất thành false
 		finale: appNodes.finaleMode.checked,
 		skyLighting: appNodes.skyLighting.value,
 		longExposure: appNodes.longExposure.checked,
