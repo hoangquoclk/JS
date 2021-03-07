@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie - Quoc</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- --------------- navbar ------------------ -->
+    <header>
+        <div class="logo">
+            <a href="">
+                <img src="https://image.freepik.com/free-vector/film-logo-design_93835-629.jpg" 
+                alt="Logo Uchiha Quoc" title="Logo film">
+            </a>
+        </div>
+        <div class="search">
+            <input type="text" name="search" id="search-text" class="search-text" 
+            autocomplete="off" placeholder="Search">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="menu">
+            <ul class="menu-list">
+                <li>
+                    <a href="">Phim</a>
+                    <ul class="menu-child">
+                        <li><a href="">Phim hoạt hình</a></li>
+                        <li><a href="">Phim hành động</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">Video</a>
+                    <ul class="menu-child">
+                        <li><a href="">Phim hoạt hình</a></li>
+                        <li><a href="">Phim hành động</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Tin tức</a></li>
+                <li><a href="">Truyện</a></li>
+                <li><a href="">BXH</a></li>
+            </ul>
+            <div class="bar-menu">
+                <i class="fas fa-bars">
+                    <ul class="menu-list">
+                        <li>
+                            <a href="">Phim</a>
+                            <ul class="menu-child">
+                                <li><a href="">Phim hoạt hình</a></li>
+                                <li><a href="">Phim hành động</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Video</a>
+                            <ul class="menu-child">
+                                <li><a href="">Phim hoạt hình</a></li>
+                                <li><a href="">Phim hành động</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Tin tức</a></li>
+                        <li><a href="">Truyện</a></li>
+                        <li><a href="">BXH</a></li>
+                    </ul>
+                </i>
+                
+            </div>
+        </div>
+        <div class="support">
+            <div class="day-night">
+                <i class="far fa-lightbulb" title="On/Off"></i>
+            </div>
+            <div class="account">
+                <i class="fas fa-user"></i>
+                <ul class="function">
+                    <li><a href="">Login</a></li>
+                    <li><a href="">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- ---------------- advertisement -------------- -->
+    <div class="ad-container">
+        <div class="ad-info">
+            <div class="img-ad">
+                <img src="https://genk.mediacdn.vn/2019/2/5/photo-1-1509959558316-15493360771752080726794.jpg" alt="">
+                    <a href="">UCHIHA <span class="orange_word">CLAN</span></a>
+                    <p class="description">Sed ut perspiciatis unde omnis iste 
+                    natus error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, ...</p>
+            </div>
+            <div class="img-ad">
+                <img src="https://cutewallpaper.org/21/nanatsu-no-taizai-wallpaper-hd/Wallpaper-Nanatsu-no-Taizai-by-SurUMkata-on-DeviantArt.jpg" alt="">
+                <a href="">nanatsu <span class="orange_word">NOTAIZAI</span></a>
+                <p class="description">Sed ut perspiciatis unde omnis iste 
+                natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, ...</p>
+            </div>
+            <div class="img-ad">
+                <img src="https://wallpapercave.com/wp/wp4090630.jpg" alt="">
+                <a href="">DRAGON BALL <span class="orange_word">SUPER</span></a>
+                <p class="description">Sed ut perspiciatis unde omnis iste 
+                natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, ...</p>
+            </div>
+        </div>
+    
+        <i class="fas fa-chevron-left"></i>
+        <i class="fas fa-chevron-right"></i>
+        <ul class="number-ad">
+            <!-- <li class="number-ad-child active">1</li>
+            <li class="number-ad-child">2</li>
+            <li class="number-ad-child">3</li> -->
+        </ul>
+    </div>
+    <!-- ---------------- Newest Movie -------------- -->
+    <div class="newestMovie-container">
+        <div class="title">
+            <h1>
+                Newest <span class="orange_word">Movie</span>
+            </h1>
+        </div>
+
+        <div class="listNewestMovie">
+            <div class="row-5">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <div class="review-movie">
+                        <a href="" class="movie-name">John Wich</a>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt" title="B"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="movie-time">
+                            <i class="far fa-clock"></i>
+                            <span>02 hours 04 minutes</span>
+                        </div>
+                        <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                             sit voluptatem accusantium doloremque laudantium,
+                              totam rem aperiam, ...</p><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><hr>
+                        <div class="trailer-detail">
+                            <i class="far fa-play-circle"></i>
+                            <small><a href="">Trailer</a></small>
+                            <i class="fas fa-info-circle"></i>
+                            <small><a href="">Detail</a></small>
+                        </div>
+    
+                        <div class="point-rate">8.2</div>
+                    </div>
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                </div>
+                <a href="" class="movie-name">Game night</a>
+                <br>
+                <small>August 31, 2017</small>    
+            </div>
+
+            <div class="row-5">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <div class="review-movie">
+                        <a href="" class="movie-name">John Wich</a>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt" title="B"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="movie-time">
+                            <i class="far fa-clock"></i>
+                            <span>02 hours 04 minutes</span>
+                        </div>
+                        <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                             sit voluptatem accusantium doloremque laudantium,
+                              totam rem aperiam, ...</p><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><hr>
+                        <div class="trailer-detail">
+                            <i class="far fa-play-circle"></i>
+                            <small><a href="">Trailer</a></small>
+                            <i class="fas fa-info-circle"></i>
+                            <small><a href="">Detail</a></small>
+                        </div>
+    
+                        <div class="point-rate">8.2</div>
+                    </div>
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                </div>
+                <a href="" class="movie-name">Game night</a>
+                <br>
+                <small>August 31, 2017</small>
+            </div>
+
+            <div class="row-5">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <div class="review-movie">
+                        <a href="" class="movie-name">John Wich</a>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt" title="B"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="movie-time">
+                            <i class="far fa-clock"></i>
+                            <span>02 hours 04 minutes</span>
+                        </div>
+                        <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                             sit voluptatem accusantium doloremque laudantium,
+                              totam rem aperiam, ...</p><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><hr>
+                        <div class="trailer-detail">
+                            <i class="far fa-play-circle"></i>
+                            <small><a href="">Trailer</a></small>
+                            <i class="fas fa-info-circle"></i>
+                            <small><a href="">Detail</a></small>
+                        </div>
+    
+                        <div class="point-rate">8.2</div>
+                    </div>
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                </div>
+                <a href="" class="movie-name">Game night</a>
+                <br>
+                <small>August 31, 2017</small>
+                
+
+                
+            </div>
+
+            <div class="row-5">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <div class="review-movie">
+                        <a href="" class="movie-name">John Wich</a>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt" title="B"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="movie-time">
+                            <i class="far fa-clock"></i>
+                            <span>02 hours 04 minutes</span>
+                        </div>
+                        <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                             sit voluptatem accusantium doloremque laudantium,
+                              totam rem aperiam, ...</p><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><hr>
+                        <div class="trailer-detail">
+                            <i class="far fa-play-circle"></i>
+                            <small><a href="">Trailer</a></small>
+                            <i class="fas fa-info-circle"></i>
+                            <small><a href="">Detail</a></small>
+                        </div>
+    
+                        <div class="point-rate">8.2</div>
+                    </div>
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                </div>
+                <a href="" class="movie-name">Game night</a>
+                <br>
+                <small>August 31, 2017</small>
+                
+
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="background-tvHot">
+        <div class="title-category">
+            <h1>
+                Tv Show <span class="orange_word">Hot</span>
+            </h1>
+        </div>
+    </div>
+    <!-- ---------------- TV show hot ---------------- -->
+    <div class="tvShowHot-container">
+        
+
+        <div class="list-tvShowHot">
+            <div class="row-2">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                    <!-- <a href="" class="movie-name">Game night</a>
+                    <br>
+                    <small>August 31, 2017</small>   -->
+                </div>
+                
+
+                <div class="review-movie">
+                    <a href="" class="movie-name">John Wich</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt" title="B"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="movie-time">
+                        <i class="far fa-clock"></i>
+                        <span>02 hours 04 minutes</span>
+                    </div>
+                    <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                         sit voluptatem accusantium doloremque laudantium,
+                          totam rem aperiam, ...</p><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><hr>
+                    <div class="trailer-detail">
+                        <i class="far fa-play-circle"></i>
+                        <small><a href="">Trailer</a></small>
+                        <i class="fas fa-info-circle"></i>
+                        <small><a href="">Detail</a></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-2">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                    <!-- <a href="" class="movie-name">Game night</a>
+                    <br>
+                    <small>August 31, 2017</small>   -->
+                </div>
+                
+
+                <div class="review-movie">
+                    <a href="" class="movie-name">John Wich</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt" title="B"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="movie-time">
+                        <i class="far fa-clock"></i>
+                        <span>02 hours 04 minutes</span>
+                    </div>
+                    <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                         sit voluptatem accusantium doloremque laudantium,
+                          totam rem aperiam, ...</p><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><hr>
+                    <div class="trailer-detail">
+                        <i class="far fa-play-circle"></i>
+                        <small><a href="">Trailer</a></small>
+                        <i class="fas fa-info-circle"></i>
+                        <small><a href="">Detail</a></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-2">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                    <!-- <a href="" class="movie-name">Game night</a>
+                    <br>
+                    <small>August 31, 2017</small>   -->
+                </div>
+                
+
+                <div class="review-movie">
+                    <a href="" class="movie-name">John Wich</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt" title="B"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="movie-time">
+                        <i class="far fa-clock"></i>
+                        <span>02 hours 04 minutes</span>
+                    </div>
+                    <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                         sit voluptatem accusantium doloremque laudantium,
+                          totam rem aperiam, ...</p><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><hr>
+                    <div class="trailer-detail">
+                        <i class="far fa-play-circle"></i>
+                        <small><a href="">Trailer</a></small>
+                        <i class="fas fa-info-circle"></i>
+                        <small><a href="">Detail</a></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-2">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                    <!-- <a href="" class="movie-name">Game night</a>
+                    <br>
+                    <small>August 31, 2017</small>   -->
+                </div>
+                
+
+                <div class="review-movie">
+                    <a href="" class="movie-name">John Wich</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt" title="B"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="movie-time">
+                        <i class="far fa-clock"></i>
+                        <span>02 hours 04 minutes</span>
+                    </div>
+                    <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                         sit voluptatem accusantium doloremque laudantium,
+                          totam rem aperiam, ...</p><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>July 28, 2017</strong>
+                    </small><hr>
+                    <div class="trailer-detail">
+                        <i class="far fa-play-circle"></i>
+                        <small><a href="">Trailer</a></small>
+                        <i class="fas fa-info-circle"></i>
+                        <small><a href="">Detail</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    
+    <div class="background-anime">
+        <div class="title-category">
+            <h1>
+                Anime <span class="orange_word">Movie</span>
+            </h1>
+        </div>
+    </div>
+    <!-- ---------------- Anime Movie -------------- -->
+    <div class="newestMovie-container">
+        <div class="listNewestMovie">
+            <div class="row-5">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <div class="review-movie">
+                        <a href="" class="movie-name">John Wich</a>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt" title="B"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="movie-time">
+                            <i class="far fa-clock"></i>
+                            <span>02 hours 04 minutes</span>
+                        </div>
+                        <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                             sit voluptatem accusantium doloremque laudantium,
+                              totam rem aperiam, ...</p><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><hr>
+                        <div class="trailer-detail">
+                            <i class="far fa-play-circle"></i>
+                            <small><a href="">Trailer</a></small>
+                            <i class="fas fa-info-circle"></i>
+                            <small><a href="">Detail</a></small>
+                        </div>
+    
+                        <div class="point-rate">8.2</div>
+                    </div>
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                </div>
+                <a href="" class="movie-name">Game night</a>
+                <br>
+                <small>August 31, 2017</small>    
+            </div>
+
+            <div class="row-5">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <div class="review-movie">
+                        <a href="" class="movie-name">John Wich</a>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt" title="B"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="movie-time">
+                            <i class="far fa-clock"></i>
+                            <span>02 hours 04 minutes</span>
+                        </div>
+                        <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                             sit voluptatem accusantium doloremque laudantium,
+                              totam rem aperiam, ...</p><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><hr>
+                        <div class="trailer-detail">
+                            <i class="far fa-play-circle"></i>
+                            <small><a href="">Trailer</a></small>
+                            <i class="fas fa-info-circle"></i>
+                            <small><a href="">Detail</a></small>
+                        </div>
+    
+                        <div class="point-rate">8.2</div>
+                    </div>
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                </div>
+                <a href="" class="movie-name">Game night</a>
+                <br>
+                <small>August 31, 2017</small>
+            </div>
+
+            <div class="row-5">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <div class="review-movie">
+                        <a href="" class="movie-name">John Wich</a>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt" title="B"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="movie-time">
+                            <i class="far fa-clock"></i>
+                            <span>02 hours 04 minutes</span>
+                        </div>
+                        <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                             sit voluptatem accusantium doloremque laudantium,
+                              totam rem aperiam, ...</p><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><hr>
+                        <div class="trailer-detail">
+                            <i class="far fa-play-circle"></i>
+                            <small><a href="">Trailer</a></small>
+                            <i class="fas fa-info-circle"></i>
+                            <small><a href="">Detail</a></small>
+                        </div>
+    
+                        <div class="point-rate">8.2</div>
+                    </div>
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                </div>
+                <a href="" class="movie-name">Game night</a>
+                <br>
+                <small>August 31, 2017</small>
+                
+
+                
+            </div>
+
+            <div class="row-5">
+                <div class="movie-img">
+                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
+                    <div class="review-movie">
+                        <a href="" class="movie-name">John Wich</a>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt" title="B"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="movie-time">
+                            <i class="far fa-clock"></i>
+                            <span>02 hours 04 minutes</span>
+                        </div>
+                        <p class="description">Sed ut perspiciatis unde omnis iste natus error
+                             sit voluptatem accusantium doloremque laudantium,
+                              totam rem aperiam, ...</p><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><br>
+                        <small class="release-date">
+                            Release Date: 
+                            <strong>July 28, 2017</strong>
+                        </small><hr>
+                        <div class="trailer-detail">
+                            <i class="far fa-play-circle"></i>
+                            <small><a href="">Trailer</a></small>
+                            <i class="fas fa-info-circle"></i>
+                            <small><a href="">Detail</a></small>
+                        </div>
+    
+                        <div class="point-rate">8.2</div>
+                    </div>
+                    <a href="">
+                        <div class="hover-img">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </a>
+                    <div class="point-rate">8.2</div>
+                </div>
+                <a href="" class="movie-name">Game night</a>
+                <br>
+                <small>August 31, 2017</small>
+                
+
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ------------------ footer ------------- -->
+    <footer>
+        <div class="info">
+            <div class="info-detail">
+                <img src="https://image.freepik.com/free-vector/film-logo-design_93835-629.jpg" alt="">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                       nisi ut aliquip ex ea commodo consequat</p>
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-twitter-square"></i>
+            </div>
+            <div class="contact-us">
+                <p><i class="fas fa-paper-plane"></i> Khu phố 6, Xuân Trung, Thủ Đức, TP.HCM</p>
+                <p><i class="far fa-envelope"></i> hoangquoclk003@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 0388 240 570</p>
+                <form action="">
+                    <input type="text" name="email-address" id="email-address" 
+                        placeholder="Your email address">
+                    <i class="fas fa-envelope-open-text"></i>
+                </form>
+            </div>
+        </div>
+        <div class="ended">
+            <div class="copyright">&copy;copyright 2016 Movie</div>
+            <div class="home"><a href="">Home</a></div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,871 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* background-image: linear-gradient(to right, #232526, #414345); */
+    /* background: url(https://lh3.googleusercontent.com/proxy/jHURr7uitAQ0FuNGI4Qa1eME_YjNwrjgZ2blvMvnLj5SFOIALssdcawhc8NBirZZoL5VOKkRbocZKnMzhlVaVL0j6JzD-Ef5n7hizBcieofhYCp98whnc2Hwtt1TNjyJ1MZW0RtkvPJAto_3G4vfWz0); */
+    background: url(https://img.freepik.com/free-vector/white-background-with-triangle-patterns_1017-18410.jpg?size=626&ext=jpg);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.orange_word {
+    color: orange;
+}
+
+.fas.fa-star, .fas.fa-star-half-alt, .far.fa-star {
+    color: rgb(255, 208, 0);
+}
+
+.title {
+    
+}
+
+.title h1 {
+    position: relative;
+    font-size: 2rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.title h1:before, .title h1:after {
+    position: absolute; 
+    /* bị động so với thẻ h1 */
+    top: 40%;
+    width: 50%;
+    height: 3px;
+    content: '';
+    overflow: hidden;
+    /* 2 đường kẻ ở trên */
+    border-top: 2px dotted #b5b5b5;
+    border-bottom: 2px dotted #b5b5b5;
+}
+
+.title h1::before {
+    margin-left: -52%;
+}
+
+.title h1::after {
+    margin-left: 2%;
+}
+
+/* ---------------- navbar --------------- */
+header {
+    width: 90%;
+    height: 40px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 10% 30% 45% 10%;
+    justify-content: space-between;
+}
+
+header .logo {
+    width: 100%;
+}
+
+header .logo img {
+    width: 40px;
+    height: auto;
+}
+
+header .search {
+    width: 100%;
+    position: relative;
+}
+
+header .search .search-text {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: 1px solid #b5b5b5;
+    background-color: transparent;
+}
+
+header .search .search-text::placeholder {
+    color: #242424;
+}
+
+header .search .search-text:focus {
+    outline: none;
+    background-color: #fff;
+    border: none;
+}
+
+header .search .fa-search {
+    position: absolute;
+    right: 5%;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+header .search .fa-search:hover {
+    color: orange;
+}
+
+header .search .fa-search:active {
+    color: blue;
+}
+
+header .menu {
+    width: 100%;
+}
+
+header .menu .bar-menu {
+    display: none;
+    position: relative;
+}
+
+header .menu .bar-menu .fa-bars {
+    font-size: 1.5rem;
+    line-height: 40px;
+}
+
+header .menu .bar-menu .fa-bars:hover {
+    color: orange;
+    cursor: pointer;
+}
+
+header .menu .bar-menu .fa-bars:hover .menu-list {
+    display: flex;
+    flex-direction: column;
+}
+
+header .menu .bar-menu .fa-bars .menu-list {
+    list-style-type: none;
+    position: absolute;
+    display: none;
+    top: 100%;
+    right: 0%;
+    z-index: 1;
+    background-color: rgb(83, 83, 83);
+    min-width: 150px;
+    max-width: 170px;
+}
+
+header .menu .bar-menu .fa-bars .menu-list li a {
+    color: #fff;
+    padding: 5px    ;
+}
+
+header .menu .bar-menu .fa-bars .menu-list li a:hover {
+    color: orange;
+}
+
+header .menu .bar-menu .fa-bars .menu-list li .menu-child {
+    width: 100%;
+    position: absolute;
+    left: -100%;
+    top: 0%;
+} 
+
+header .menu .menu-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+header .menu .menu-list li {
+    display: inline-block;
+    position: relative;
+}
+
+header .menu .menu-list li:hover .menu-child {
+    display: block;
+}
+
+header .menu .menu-list li .menu-child {
+    position: absolute;
+    width: 200px;
+    background-color: #000;
+    padding: 10px;
+    z-index: 999;
+    display: none;
+}
+
+header .menu .menu-list li .menu-child li a {
+    color: #b5b5b5;
+    font-size: 1rem;
+}
+
+header .menu .menu-list li .menu-child li a:hover {
+    color: orange;
+}
+
+header .menu .menu-list li a {
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 40px;
+    color: #000;
+    font-size: 1.1rem;
+}
+
+header .menu .menu-list li a:hover {
+    color: orange;
+}
+
+header .support {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    line-height: 40px;
+    font-size: 1.2rem;
+}
+
+header .support .day-night {
+    cursor: pointer;
+    color: orange;
+}
+
+header .support .account {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    width: 40px;
+}
+
+header .support .day-night:hover {
+    color: #000;
+}
+
+header .support .account:hover {
+    color: orange;
+}
+
+header .support .account:hover .function {
+    display: block;
+    z-index: 999;
+}
+
+header .support .account .function {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 100%;
+    width: 100px;
+}
+
+header .support .account .function li {
+   margin: 0;
+   background-color: #000;
+   padding: 5px;
+}
+
+header .support .account .function li a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #b5b5b5;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+header .support .account .function li a:hover {
+    color: orange;
+}
+
+.ad-container {
+    width: 100%;
+    height: 500px;
+    color: #fff;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ad-container .ad-info {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: relative;
+}
+
+.ad-container .ad-info .img-ad {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.ad-container .ad-info .img-ad img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ad-container .ad-info .img-ad a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 3rem;
+    cursor: pointer;
+    position: absolute;
+    bottom: 60%;
+    left: 15%;
+}
+
+.ad-container .ad-info .img-ad a:hover {
+    color: orange;
+}
+
+.ad-container .ad-info .img-ad p {
+    width: 60%;
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    right: 10%;
+} 
+
+.ad-container .fa-chevron-left {
+    font-size: 2rem;
+    position: absolute;
+    top: 45%;
+    left: 2%;
+    cursor: pointer;
+}
+
+.ad-container .fa-chevron-right {
+    font-size: 2.5rem;
+    position: absolute;
+    top: 45%;
+    right: 2%;
+    cursor: pointer;
+}
+
+.ad-container .fa-chevron-right:hover {
+    color: orange;
+}
+
+.ad-container .fa-chevron-right:active {
+    color: #000;
+}
+
+.ad-container .fa-chevron-left:hover {
+    color: orange;
+}
+
+.ad-container .fa-chevron-left:active {
+    color: #000;
+}
+
+.ad-container .number-ad {
+    position: absolute;
+    bottom: 2%;
+    text-align: center;
+    line-height: 40px;
+    left: 0;
+    right: 0;
+}
+
+.ad-container .number-ad li {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000;
+    margin: auto;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.ad-container .number-ad li.active {
+    background-color: orange;
+    color: #000;
+}
+
+.ad-container .number-ad li:hover {
+    color: orange;
+}
+
+ /* ------------------ newest movie ------------------ */
+
+ .newestMovie-container {
+    width: 90%;
+    margin: 0 auto 50px;
+}  
+
+.newestMovie-container .listNewestMovie {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-gap: 25px;
+}
+
+.newestMovie-container .listNewestMovie .row-5 {
+    position: relative;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, .5);
+    /* padding: 10px; */
+    background-color: #fff;
+    margin-top: 50px;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img {
+    position: relative;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img:hover .review-movie {
+    display: block;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .point-rate {
+    background-color: orange;
+    border-radius: 50%;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .hover-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: orange;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    transition: 0.5s ease;
+    display: flex;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .hover-img i {
+    color: #fff;
+    margin: auto;
+    font-size: 2.5rem;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img:hover .hover-img {
+    opacity: 0.3;
+}
+
+.newestMovie-container .listNewestMovie .row-5 a.movie-name {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #000;
+    margin: 5px;
+}
+
+.newestMovie-container .listNewestMovie .row-5 a:hover {
+    color: orange;
+}
+
+.newestMovie-container .listNewestMovie .row-5 small {
+    margin: 5px;
+    font-size: 0.8rem;
+    color: #b5b5b5;
+}
+
+.newestMovie-container .listNewestMovie .row-5 small strong {
+    color: #fff;
+}
+
+/* ---------- Review movie ------------ */
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie {
+    width: 22rem;
+    height: 100%;
+    padding: 1.5rem;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    right: -22.2rem;
+    display: none;
+    z-index: 1;
+    border-radius: 10px;
+    overflow: auto;
+}  
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie .movie-name {
+    color: #fff;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie .movie-name:hover {
+    color: orange;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie .trailer-detail i {
+    font-size: 1rem;
+    color: orange;
+}
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie .description {
+    font-size: 0.8rem;
+    color: #eeeeee;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie .movie-time {
+    color: orange;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie .trailer-detail a {
+    text-decoration: none;
+    color: #b5b5b5;
+    margin-left: 0.1rem;
+    margin-right: 1rem;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie .trailer-detail a:hover {
+    color: orange;
+}
+
+.newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie .point-rate{
+    background-color: orange;
+    border-radius: 50%;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+
+/* ----------------- list TV show hot --------------- */
+.tvShowHot-container {
+    width: 90%;
+    margin: 0 auto 50px;
+}  
+
+.tvShowHot-container .list-tvShowHot {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 49% 49%;
+    grid-gap: 25px;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 {
+    display: grid;
+    grid-template-columns: 35% 60%;
+    justify-content: space-between;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, .5);
+    padding: 10px;
+    background-color: #e5e5e5;
+    margin-top: 50px;
+    background-color: #fff;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .movie-img {
+    position: relative;
+    width: 100%;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .movie-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .movie-img .point-rate {
+    background-color: orange;
+    border-radius: 50%;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .movie-img .hover-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: orange;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    transition: 0.5s ease;
+    display: flex;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .movie-img .hover-img i {
+    color: #fff;
+    margin: auto;
+    font-size: 2.5rem;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .movie-img:hover .hover-img {
+    opacity: 0.3;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 small {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #242424;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 small strong {
+    color: rgb(15, 15, 15);
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background-color: transparent;
+    display: block;
+    z-index: 1;
+}  
+
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie a {
+    text-decoration: none;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie .movie-name {
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie .movie-name:hover {
+    color: orange;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie .trailer-detail i {
+    font-size: 1rem;
+    color: orange;
+}
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie .description {
+    font-size: 0.8rem;
+    color: #242424;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie .movie-time {
+    color: orange;
+}
+
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie .trailer-detail a {
+    text-decoration: none;
+    color: #111111;
+    margin-left: 0.1rem;
+    margin-right: 1rem;
+}
+.tvShowHot-container .list-tvShowHot .row-2 .review-movie .trailer-detail a:hover {
+    color: orange;
+}
+
+.background-tvHot {
+    width: 100%;
+    height: 500px;
+    background: url(https://wallpaperforu.com/wp-content/uploads/2020/04/948861-scaled.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-category h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.background-anime {
+    width: 100%;
+    height: 500px;
+    background: url(https://wallpaperaccess.com/full/165083.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------ footer -------------- */
+footer {
+    width: 100%;
+    height: 600px;
+    background: url(https://images.unsplash.com/photo-1486078695445-0497c2f58cfe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80)
+    no-repeat center center;
+    background-size: cover;
+}
+
+footer .info {
+    width: 100%;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: space-around;
+    color: rgb(185, 185, 185);
+}
+
+footer .info .info-detail {
+    width: 25%;
+    height: auto;
+    margin: 50px;
+}
+
+footer .info .info-detail img {
+    width: 100px;
+    height: 100px;
+}
+
+footer .info .info-detail p {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer .info .info-detail i {
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+footer .info .info-detail i:hover {
+    color: orange;
+}
+
+footer .contact-us {
+    width: 30%;
+    height: auto;
+    margin: 50px;
+}
+
+footer .contact-us p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+footer .contact-us p i {
+    margin-right: 10px;
+}
+
+footer .contact-us p i.fa-phone {
+    color: orange;
+}
+
+footer .contact-us input {
+    padding: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    width: 95%;
+}
+
+footer .contact-us form {
+    position: relative;
+}
+
+footer .contact-us form input:focus {
+    outline: none;
+}
+
+footer .contact-us form i.fa-envelope-open-text {
+    position: absolute;
+    right: 10%;
+    top: 35%;
+    cursor: pointer;
+}
+
+footer .contact-us form i.fa-envelope-open-text:hover {
+    color: orange;
+}
+
+footer .contact-us form i.fa-envelope-open-text:active {
+    color: #000;
+}
+
+footer .ended {
+    width: 100%;
+    height: 100px;
+    background-color: #000;
+    color: rgb(185, 185, 185);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    line-height: 100px;
+}
+
+footer .ended .copyright {
+    width: 80%;
+    height: 100%;
+    font-size: 1rem;
+}
+
+footer .ended .home a {
+    color: rgb(185, 185, 185);
+    text-decoration: none;
+}
+
+@keyframes animation_a {
+    from {bottom: 30%;}
+    to {bottom: 60%;}
+}
+
+/* ------------- web responsive --------------- */
+@media only screen and (max-width: 768px) {
+    header {
+        width: 90%;
+        height: 40px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 10% 60% 5% 15%;
+        justify-content: space-between;
+    }
+
+    header .menu .menu-list {
+        display: none;
+    }
+
+    header .menu .bar-menu {
+        display: block;
+    }
+
+    .newestMovie-container .listNewestMovie {
+        display: grid;
+        justify-content: space-around;
+        grid-template-columns: 40% 40%;
+        grid-gap: 15px;
+    }
+
+    .tvShowHot-container .list-tvShowHot {
+        display: grid;
+        justify-content: space-around;
+        grid-template-columns: 90%;
+        grid-gap: 10px;
+    }
+
+    footer .info {
+        justify-content: space-between;
+    }
+
+    footer .info .info-detail {
+        width: 40%;
+        padding: 10px;
+    }
+
+    footer .info .info-detail p {
+        height: 200px;
+        overflow: auto;
+    }
+
+    footer .contact-us {
+        width: 40%;
+        padding: 10px;
+    }
+}

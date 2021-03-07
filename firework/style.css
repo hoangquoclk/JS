@@ -6,10 +6,22 @@
   html,
   body {
     height: 100%;
+    position: relative;
   }
   
   html {
     background-color: #000;
+  }
+
+  h1.Ha {
+    z-index: 1;
+    position: absolute;
+    font-size: 4rem;
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+
+  h1.Ha img {
+    border-radius: 50%;
   }
   
   body {
