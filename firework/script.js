@@ -131,7 +131,7 @@ const store = {
 					? '1.2' // Profile header default (doesn't need to be an int)
 					: '2', // Mobile default
 			autoLaunch: true,
-			finale: false,
+			finale: true,
 			skyLighting: SKY_LIGHT_NORMAL + '',
 			hideControls: IS_HEADER,
 			longExposure: false,
@@ -464,6 +464,7 @@ function getConfigFromDOM() {
 		shell: appNodes.shellType.value,
 		size: appNodes.shellSize.value,
 		autoLaunch: appNodes.autoLaunch.checked,
+		finaleMode: appNodes.finaleMode.checked,
 		finale: appNodes.finaleMode.checked,
 		skyLighting: appNodes.skyLighting.value,
 		longExposure: appNodes.longExposure.checked,
