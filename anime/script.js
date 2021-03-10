@@ -9,6 +9,8 @@ const SLIDE_CONTAINER = document.querySelector('.ad-info');
 const NEXT_BTN = document.querySelector('.fa-chevron-right');
 const PREV_BTN = document.querySelector('.fa-chevron-left');
 const NUMBER_AD = document.querySelector('.number-ad');
+const MOVIE_IMGS = document.querySelectorAll('.row-5 .movie-img');
+const LIGHTBULB = document.querySelector('.fa-lightbulb');
 
 let numberOfImages = SLIDE_IMG.length;
 // let slideWidth = SLIDE_IMG[0].clientWidth; // xét độ rộng của phần tử đầu tiên
@@ -114,5 +116,80 @@ function autoChangeSlide() {
 
 setInterval(autoChangeSlide, 5000);
 
-// Click bar menu
-// fa_bar_icon.addEventListener();
+// GET POSITION OF REVIEW FILM
+function hoverReviewFilm () {
+    MOVIE_IMGS.forEach((mov) => {
+        let widthWindow = window.innerWidth;
+        let widthPosRight = mov.getBoundingClientRect().right;
+        let widthPosLeft = mov.getBoundingClientRect().left; // get the right position
+        let widthEle = mov.getBoundingClientRect().width; // get width the element
+        // let widthEleReview = widthEle*1.2; 
+
+        if(widthWindow - widthPosRight < widthEle && widthPosLeft < widthEle) {
+            reviewMovie = mov.querySelector('.review-movie');
+            reviewMovie.style.top = "100%";
+            reviewMovie.style.left = "0%";
+        }
+
+        else if(widthWindow - widthPosRight < widthEle) {
+            reviewMovie = mov.querySelector('.review-movie');
+            reviewMovie.style.top = "0%";
+            reviewMovie.style.left = "-100%";
+        }
+        else {
+            reviewMovie = mov.querySelector('.review-movie');
+            reviewMovie.style.top = "0%";
+            reviewMovie.style.left = "100%";  
+        }
+    });
+}
+
+window.addEventListener("resize", function(){
+    MOVIE_IMGS.forEach((mov) => {
+        let widthWindow = window.innerWidth;
+        let widthPosRight = mov.getBoundingClientRect().right;
+        let widthPosLeft = mov.getBoundingClientRect().left; // get the right position
+        let widthEle = mov.getBoundingClientRect().width; // get width the element
+        // let widthEleReview = widthEle * 1.2; 
+        
+        if(widthWindow - widthPosRight < widthEle && widthPosLeft < widthEle) {
+            reviewMovie = mov.querySelector('.review-movie');
+            reviewMovie.style.top = "100%";
+            reviewMovie.style.left = "0%";
+        }
+
+        else if(widthWindow - widthPosRight < widthEle) {
+            reviewMovie = mov.querySelector('.review-movie');
+            reviewMovie.style.left = "-100%";
+            reviewMovie.style.top = "0%";
+        }
+        else {
+            reviewMovie = mov.querySelector('.review-movie');
+            reviewMovie.style.left = "100%";
+            reviewMovie.style.top = "0%";
+        }
+    });
+});
+hoverReviewFilm();
+
+// click to turn on/ off lightbulb
+
+var url = ["url(https://wallpaperaccess.com/full/400195.jpg)",
+    "url(https://img.freepik.com/free-vector/white-background-with-triangle-patterns_1017-18410.jpg?size=626&ext=jpg)"];
+var i = 0;
+
+
+LIGHTBULB.addEventListener("click", () => {
+    document.querySelectorAll(".menu .menu-list li a").forEach((menu) => {
+        menu.classList.toggle("white");
+    });
+
+    if(i == url.length) {
+        i = 0;
+    }
+
+    document.querySelector(".account").classList.toggle("white");
+    document.querySelector(".day-night").classList.toggle("white");
+    document.querySelector("body").style.background = url[i];
+    i++;
+});

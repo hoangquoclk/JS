@@ -8,7 +8,6 @@
 
 body {
     /* background-image: linear-gradient(to right, #232526, #414345); */
-    /* background: url(https://lh3.googleusercontent.com/proxy/jHURr7uitAQ0FuNGI4Qa1eME_YjNwrjgZ2blvMvnLj5SFOIALssdcawhc8NBirZZoL5VOKkRbocZKnMzhlVaVL0j6JzD-Ef5n7hizBcieofhYCp98whnc2Hwtt1TNjyJ1MZW0RtkvPJAto_3G4vfWz0); */
     background: url(https://img.freepik.com/free-vector/white-background-with-triangle-patterns_1017-18410.jpg?size=626&ext=jpg);
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -16,6 +15,10 @@ body {
 
 .orange_word {
     color: orange;
+}
+
+.white {
+    color: #fff;
 }
 
 .fas.fa-star, .fas.fa-star-half-alt, .far.fa-star {
@@ -69,8 +72,8 @@ header .logo {
 }
 
 header .logo img {
-    width: 40px;
-    height: auto;
+    width: 100%;
+    height: 40px;
 }
 
 header .search {
@@ -145,14 +148,18 @@ header .menu .bar-menu .fa-bars .menu-list {
     top: 100%;
     right: 0%;
     z-index: 1;
-    background-color: rgb(83, 83, 83);
+    background-color: rgb(44, 44, 44);
     min-width: 150px;
     max-width: 170px;
 }
 
+header .menu .bar-menu .fa-bars .menu-list li {
+    text-align: center;
+}
+
 header .menu .bar-menu .fa-bars .menu-list li a {
     color: #fff;
-    padding: 5px    ;
+    padding: 5px;
 }
 
 header .menu .bar-menu .fa-bars .menu-list li a:hover {
@@ -203,7 +210,7 @@ header .menu .menu-list li a {
     text-decoration: none;
     font-weight: 700;
     line-height: 40px;
-    color: #000;
+    
     font-size: 1.1rem;
 }
 
@@ -215,14 +222,18 @@ header .support {
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     line-height: 40px;
     font-size: 1.2rem;
 }
 
-header .support .day-night {
+/* header .support .day-night {
     cursor: pointer;
-    color: orange;
+    color: #000;
+} */
+
+header .support .day-night .fa-lightbulb {
+    cursor: pointer;
 }
 
 header .support .account {
@@ -233,7 +244,7 @@ header .support .account {
 }
 
 header .support .day-night:hover {
-    color: #000;
+    color: orange;
 }
 
 header .support .account:hover {
@@ -250,7 +261,7 @@ header .support .account .function {
     display: none;
     position: absolute;
     top: 40px;
-    right: 100%;
+    right: 0%;
     width: 100px;
 }
 
@@ -258,6 +269,7 @@ header .support .account .function li {
    margin: 0;
    background-color: #000;
    padding: 5px;
+   text-align: center;
 }
 
 header .support .account .function li a {
@@ -386,7 +398,7 @@ header .support .account .function li a:hover {
 
  /* ------------------ newest movie ------------------ */
 
- .newestMovie-container {
+.newestMovie-container {
     width: 90%;
     margin: 0 auto 50px;
 }  
@@ -394,14 +406,13 @@ header .support .account .function li a:hover {
 .newestMovie-container .listNewestMovie {
     display: grid;
     justify-content: space-around;
-    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-columns: 22% 22% 22% 22%;
     grid-gap: 25px;
 }
 
 .newestMovie-container .listNewestMovie .row-5 {
     position: relative;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, .5);
-    /* padding: 10px; */
     background-color: #fff;
     margin-top: 50px;
 }
@@ -414,6 +425,8 @@ header .support .account .function li a:hover {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: cover;
+    object-position: center;
 }
 
 .newestMovie-container .listNewestMovie .row-5 .movie-img:hover .review-movie {
@@ -482,13 +495,13 @@ header .support .account .function li a:hover {
 
 /* ---------- Review movie ------------ */
 .newestMovie-container .listNewestMovie .row-5 .movie-img .review-movie {
-    width: 22rem;
+    width: 100%;
     height: 100%;
     padding: 1.5rem;
     background-color: black;
     position: absolute;
     top: 0;
-    right: -22.2rem;
+    left: 100%;
     display: none;
     z-index: 1;
     border-radius: 10px;
@@ -537,7 +550,7 @@ header .support .account .function li a:hover {
     font-weight: bold;
     color: #fff;
     position: absolute;
-    top: 10%;
+    top: 5%;
     right: 5%;
 }
 
@@ -574,6 +587,8 @@ header .support .account .function li a:hover {
     width: 100%;
     height: 100%;
     display: block;
+    object-fit: cover;
+    object-position: center;
 }
 
 .tvShowHot-container .list-tvShowHot .row-2 .movie-img .point-rate {
@@ -722,7 +737,7 @@ footer .info .info-detail {
 
 footer .info .info-detail img {
     width: 100px;
-    height: 100px;
+    height: auto;
 }
 
 footer .info .info-detail p {
@@ -817,15 +832,23 @@ footer .ended .home a {
     to {bottom: 60%;}
 }
 
+@media only screen and (max-width: 1024px) {
+    .newestMovie-container .listNewestMovie {
+        grid-template-columns: 40% 40%;
+        grid-gap: 15px;
+    }
+
+    .tvShowHot-container .list-tvShowHot {
+        justify-content: space-around;
+        grid-template-columns: 80%;
+        grid-gap: 10px;
+    }
+}
+
 /* ------------- web responsive --------------- */
 @media only screen and (max-width: 768px) {
     header {
-        width: 90%;
-        height: 40px;
-        margin: 20px auto;
-        display: grid;
         grid-template-columns: 10% 60% 5% 15%;
-        justify-content: space-between;
     }
 
     header .menu .menu-list {
@@ -836,15 +859,12 @@ footer .ended .home a {
         display: block;
     }
 
-    .newestMovie-container .listNewestMovie {
-        display: grid;
-        justify-content: space-around;
-        grid-template-columns: 40% 40%;
-        grid-gap: 15px;
-    }
+    .newestMovie-container {
+        width: 100%;
+        margin: 0 auto 20px;
+    }  
 
     .tvShowHot-container .list-tvShowHot {
-        display: grid;
         justify-content: space-around;
         grid-template-columns: 90%;
         grid-gap: 10px;
@@ -867,5 +887,105 @@ footer .ended .home a {
     footer .contact-us {
         width: 40%;
         padding: 10px;
+    }
+}
+
+/* ------------- web responsive --------------- */
+@media only screen and (max-width: 600px) {
+    header {
+        width: 100%;
+        margin: 10px 0;
+        grid-template-columns: 10% 60% 5% 15%;
+    }
+
+    .newestMovie-container .listNewestMovie {
+        grid-template-columns: 45% 45%;
+        grid-gap: 10px;
+    }
+
+    .tvShowHot-container .list-tvShowHot {
+        grid-template-columns: 95%;
+        grid-gap: 10px;
+    }
+
+    footer .info .info-detail {
+        width: 45%;
+        padding: 0;
+    }
+
+    footer .contact-us {
+        width: 45%;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .title-category h1 {
+        font-size: 2rem;
+    }
+
+    .background-tvHot {
+        height: 300px;
+    }
+
+    .background-anime {
+        height: 300px;
+    }
+
+    header .menu .bar-menu .fa-bars .menu-list {
+        right: -250%;
+    }
+
+    .ad-container {
+        height: 400px;
+    }
+
+    .ad-container .ad-info .img-ad a {
+        font-size: 2rem;
+    }
+
+    .ad-container .ad-info .img-ad p {
+        width: 80%;
+        font-size: 0.8rem;
+    }
+
+    .tvShowHot-container .list-tvShowHot .row-2 {
+        grid-template-columns: 100%;
+    }
+
+    footer .info {
+        flex-wrap: wrap;
+    }
+
+    footer .info .info-detail {
+        width: 100%;
+        margin: 50px 50px 0 50px;
+    }
+
+    footer .info .info-detail img {
+        margin-right: 50px;
+    }
+
+    footer .info .info-detail p {
+        display: none;
+    }
+
+    footer .contact-us {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    header {
+        grid-template-columns: 10% 40% 10% 25%;
+    }
+
+    .newestMovie-container .listNewestMovie {
+        grid-template-columns: 80%;
+    }
+
+
+    footer .info .info-detail img {
+        margin-right: 0px;
     }
 }
