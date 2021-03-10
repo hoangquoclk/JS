@@ -78,6 +78,8 @@ header .logo {
 header .logo img {
     width: 100%;
     height: 40px;
+    object-fit: cover;
+    object-position: center;
 }
 
 header .search {
@@ -438,7 +440,7 @@ header .support .account .function li a:hover {
 }
 
 .newestMovie-container .listNewestMovie .row-5 .movie-img .point-rate {
-    background-color: orange;
+    /* background-color: orange; */
     border-radius: 50%;
     line-height: 50px;
     width: 50px;

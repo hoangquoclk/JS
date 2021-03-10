@@ -1,6 +1,8 @@
-const APIURL = "https://api.themoviedb.org/3/discover/movie?api_key=276dac7f6ba919bdfd9d956cdcbd3d37&page=1";
+const URL_DISCOVER = 
+    "https://api.themoviedb.org/3/discover/movie?api_key=";
 const IMG_PATH = "https://image.tmdb.org/t/p/w500";
 const API_KEY = "276dac7f6ba919bdfd9d956cdcbd3d37";
+const URL_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=";
 
 const CHERVON_CLICK = document.querySelector('fa-chevron-left');
 const AD_INFO = document.querySelectorAll('ad-info');
@@ -12,20 +14,166 @@ const NUMBER_AD = document.querySelector('.number-ad');
 const MOVIE_IMGS = document.querySelectorAll('.row-5 .movie-img');
 const LIGHTBULB = document.querySelector('.fa-lightbulb');
 
+const NEWESTMOVIES_CLASS = document.querySelectorAll(".listNewestMovie");
+const TVSHOWHOT_CLASS = document.querySelectorAll(".list-tvShowHot");
+
+const NEWESTMOVIES = NEWESTMOVIES_CLASS[0];
+const BESTMOVIES = NEWESTMOVIES_CLASS[1];
+
+const TVSHOWHOT = TVSHOWHOT_CLASS[0];
+const ANIME = TVSHOWHOT_CLASS[1];
+
 let numberOfImages = SLIDE_IMG.length;
 // let slideWidth = SLIDE_IMG[0].clientWidth; // xét độ rộng của phần tử đầu tiên
 let currentSlide = 0;
 
 const fa_bar_icon = document.querySelector('.fa-bars');
 
-async function getMovies(url) {
+// get movie
+
+async function getMovies(url, category) {
     const resp = await fetch(url);
     const respData = await resp.json();
 
+    ShowMovies(respData.results,category);
     console.log(respData);
 }
 
-getMovies(APIURL);
+async function getMovies_2row(url, category) {
+    const resp = await fetch(url);
+    const respData = await resp.json();
+
+    ShowMovies_2row(respData.results,category);
+}
+
+// get newest movie
+getMovies(URL_DISCOVER + API_KEY + "&release_date.desc", NEWESTMOVIES);
+// get action movie
+getMovies(URL_DISCOVER + API_KEY + "&vote_average.gte=9&release_date.desc", BESTMOVIES);
+// get TV hot show 
+getMovies_2row(URL_DISCOVER + API_KEY, TVSHOWHOT);
+getMovies_2row(URL_SEARCH + API_KEY + "&query=anime", ANIME);
+
+function ShowMovies(movies, category) {
+    category.innerHTML = '';
+    movies.forEach((movie) => {
+        const movieEl = document.createElement("div");
+        movieEl.classList.add("row-5");
+        movieEl.innerHTML = `
+            <div class="movie-img">
+                <img src="${IMG_PATH + movie.poster_path}" alt="">
+                <div class="review-movie">
+                    <a href="" class="movie-name">${movie.title}</a>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="movie-time">
+                        <i class="fas fa-eye"></i>
+                        <span>${movie.popularity}</span>
+                    </div>
+                    <p class="description">${movie.overview}</p><br>
+                    <small class="release-date">
+                        Release Date: 
+                        <strong>${movie.release_date}</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Vote count: 
+                        <strong>${movie.vote_count}</strong>
+                    </small><br>
+                    <small class="release-date">
+                        Original Language: 
+                        <strong>${movie.original_language}</strong>
+                    </small><hr>
+                    <div class="trailer-detail">
+                        <i class="far fa-play-circle"></i>
+                        <small><a href="">Trailer</a></small>
+                        <i class="fas fa-info-circle"></i>
+                        <small><a href="">Detail</a></small>
+                    </div>
+                </div>
+                <a href="">
+                    <div class="hover-img">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                </a>
+                <div class="point-rate" style="background-color: ${getPointRate(movie.vote_average)};">${movie.vote_average}</div>
+            </div>
+            <a href="" class="movie-name">${movie.title}</a>
+            <br>
+            <small>${movie.release_date}</small>
+        `;
+        category.appendChild(movieEl);
+    });
+}
+
+function ShowMovies_2row(movies, category) {
+    category.innerHTML = '';
+    movies.forEach((movie) => {
+        const movieEl = document.createElement("div");
+        movieEl.classList.add("row-2");
+        movieEl.innerHTML = `
+            <div class="movie-img">
+                <img src="${IMG_PATH + movie.poster_path}" alt="">
+                <a href="">
+                    <div class="hover-img">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                </a>
+                <div class="point-rate" style="background-color: ${getPointRate(movie.vote_average)};">${movie.vote_average}</div>
+            </div>
+            
+
+            <div class="review-movie">
+                <a href="" class="movie-name">${movie.title}</a>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="movie-time">
+                    <i class="fas fa-eye"></i>
+                    <span>${movie.popularity}</span>
+                </div>
+                <p class="description">${movie.overview}</p><br>
+                <small class="release-date">
+                    Release Date: 
+                    <strong>${movie.release_date}</strong>
+                </small><br>
+                <small class="release-date">
+                    Vote count: 
+                    <strong>${movie.vote_count}</strong>
+                </small><br>
+                <small class="release-date">
+                    Original Language: 
+                    <strong>${movie.original_language}</strong>
+                </small><hr>
+                <div class="trailer-detail">
+                    <i class="far fa-play-circle"></i>
+                    <small><a href="">Trailer</a></small>
+                    <i class="fas fa-info-circle"></i>
+                    <small><a href="">Detail</a></small>
+                </div>
+            </div>
+        `;
+        category.appendChild(movieEl);
+    });
+}
+
+function getPointRate(point) {
+    if(point >= 8) {
+        return "green";
+    }
+    else if(point >= 5) {
+        return "orange";
+    }
+    else return "red";
+}
 
 function init() {
     // SLIDE_IMG[0] = 0%
@@ -189,12 +337,14 @@ LIGHTBULB.addEventListener("click", () => {
         menu.classList.toggle("white");
     });
 
-    // document.querySelector(".account").classList.toggle("white");
-    // document.querySelector(".day-night").classList.toggle("white");
+    document.querySelectorAll(".title h1").forEach((title) => {
+        title.classList.toggle("white");
+    });
+
     document.querySelector(".account").classList.toggle("white");
     document.querySelector(".day-night").classList.toggle("white");
-    document.querySelector(".title h1").classList.toggle("white");
     document.querySelector(".fa-search").classList.toggle("white");
     document.querySelector("body").style.background = url[i];
     i++;
 });
+
