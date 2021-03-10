@@ -177,19 +177,24 @@ hoverReviewFilm();
 var url = ["url(https://wallpaperaccess.com/full/400195.jpg)",
     "url(https://img.freepik.com/free-vector/white-background-with-triangle-patterns_1017-18410.jpg?size=626&ext=jpg)"];
 var i = 0;
+var word_color = ["#fff","#000"];
 
 
 LIGHTBULB.addEventListener("click", () => {
-    document.querySelectorAll(".menu .menu-list li a").forEach((menu) => {
-        menu.classList.toggle("white");
-    });
-
     if(i == url.length) {
         i = 0;
     }
 
+    document.querySelectorAll(".menu .menu-list li a").forEach((menu) => {
+        menu.classList.toggle("white");
+    });
+
+    // document.querySelector(".account").classList.toggle("white");
+    // document.querySelector(".day-night").classList.toggle("white");
     document.querySelector(".account").classList.toggle("white");
     document.querySelector(".day-night").classList.toggle("white");
+    document.querySelector(".title h1").classList.toggle("white");
+    document.querySelector(".fa-search").classList.toggle("white");
     document.querySelector("body").style.background = url[i];
     i++;
 });
