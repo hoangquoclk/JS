@@ -7,8 +7,7 @@
     <title>Movie - Quoc</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-    <script src="script.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="search.js" defer></script>
 </head>
 <body>
     <!-- --------------- navbar ------------------ -->
@@ -84,49 +83,16 @@
         </div>
     </header>
 
-    <!-- ---------------- advertisement -------------- -->
-    <div class="ad-container">
-        <div class="ad-info">
-            <div class="img-ad">
-                <img src="https://i.ytimg.com/vi/CDOdTT2rUzM/maxresdefault.jpg" alt="">
-                    <a href="">Bố <span class="orange_word">già</span></a>
-                    <p class="description">Sed ut perspiciatis unde omnis iste 
-                    natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam, ...</p>
-            </div>
-            <div class="img-ad">
-                <img src="https://images5.alphacoders.com/112/thumb-1920-1126978.jpg" alt="">
-                <a href="">kong vs <span class="orange_word">godzilla</span></a>
-                <p class="description">Sed ut perspiciatis unde omnis iste 
-                natus error sit voluptatem accusantium doloremque laudantium,
-                totam rem aperiam, ...</p>
-            </div>
-            <div class="img-ad">
-                <img src="https://s2.best-wallpaper.net/wallpaper/3840x2160/2003/Scarlett-Johansson-Black-Widow-2020_3840x2160.jpg" alt="">
-                <a href="">black <span class="orange_word">widow</span></a>
-                <p class="description">Sed ut perspiciatis unde omnis iste 
-                natus error sit voluptatem accusantium doloremque laudantium,
-                totam rem aperiam, ...</p>
-            </div>
-        </div>
-    
-        <i class="fas fa-chevron-left"></i>
-        <i class="fas fa-chevron-right"></i>
-        <ul class="number-ad">
-            <!-- <li class="number-ad-child active">1</li>
-            <li class="number-ad-child">2</li>
-            <li class="number-ad-child">3</li> -->
-        </ul>
-    </div>
     <!-- ---------------- Newest Movie -------------- -->
     <div class="newestMovie-container">
         <div class="title">
             <h1>
-                Newest <span class="orange_word">Movie</span>
+                Results: <span class="orange_word" id="search-title"></span> 
+                <small id="page"></small>
             </h1>
         </div>
 
-        <div class="listNewestMovie">
+        <div class="listSearch">
             <!-- <div class="row-5">
                 <div class="movie-img">
                     <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
@@ -182,92 +148,10 @@
 -->
             
         </div>
-    </div>
 
-    <div class="background-tvHot">
-        <div class="title-category">
-            <h1>
-                Tv Show <span class="orange_word">Hot</span>
-            </h1>
-        </div>
-    </div>
-    <!-- ---------------- TV show hot ---------------- -->
-    <div class="tvShowHot-container">
-        
-
-        <div class="list-tvShowHot">
-        </div>
-    </div>  
-    
-    <div class="background-anime">
-        <div class="title-category">
-            <h1>
-                Anime <span class="orange_word">Movie</span>
-            </h1>
-        </div>
-    </div>
-    <!-- ---------------- Anime Movie -------------- -->
-    <div class="tvShowHot-container">
-    
-        <div class="list-tvShowHot">
-            <!-- <div class="row-2">
-                <div class="movie-img">
-                    <img src="https://image.tmdb.org/t/p/w500/uwjaCH7PiWrkz7oWJ4fcL3xGrb0.jpg" alt="">
-                    <a href="">
-                        <div class="hover-img">
-                            <i class="fas fa-play-circle"></i>
-                        </div>
-                    </a>
-                    <div class="point-rate">8.2</div>
-                </div>
-                
-
-                <div class="review-movie">
-                    <a href="" class="movie-name">John Wich</a>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt" title="B"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                    <div class="movie-time">
-                        <i class="far fa-clock"></i>
-                        <span>02 hours 04 minutes</span>
-                    </div>
-                    <p class="description">Sed ut perspiciatis unde omnis iste natus error
-                         sit voluptatem accusantium doloremque laudantium,
-                          totam rem aperiam, ...</p><br>
-                    <small class="release-date">
-                        Release Date: 
-                        <strong>July 28, 2017</strong>
-                    </small><br>
-                    <small class="release-date">
-                        Release Date: 
-                        <strong>July 28, 2017</strong>
-                    </small><br>
-                    <small class="release-date">
-                        Release Date: 
-                        <strong>July 28, 2017</strong>
-                    </small><hr>
-                    <div class="trailer-detail">
-                        <i class="far fa-play-circle"></i>
-                        <small><a href="">Trailer</a></small>
-                        <i class="fas fa-info-circle"></i>
-                        <small><a href="">Detail</a></small>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </div> 
-    <!-- ------------------ Action movie -------------- -->
-    <div class="newestMovie-container">
-        <div class="title">
-            <h1>
-                BEST <span class="orange_word">Movie</span>
-            </h1>
-        </div>
-        <div class="listNewestMovie">
+        <div class="pagination">
+            <button id="prevPage"><i class="fas fa-arrow-circle-left"></i> Prev</button>
+            <button id="nextPage">Next <i class="fas fa-arrow-circle-right"></i></button>
         </div>
     </div>
 
@@ -280,8 +164,8 @@
                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
                        nisi ut aliquip ex ea commodo consequat</p>
-                <a href="https://www.facebook.com/quoc.hoang.18488/"><i class="fab fa-facebook-square"></i></a>
-                <a href="https://www.instagram.com/quocn.hoang/"><i class="fab fa-instagram-square"></i></a>
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-twitter-square"></i>
             </div>
             <div class="contact-us">
                 <p><i class="fas fa-paper-plane"></i> Khu phố 6, Xuân Trung, Thủ Đức, TP.HCM</p>
@@ -299,11 +183,5 @@
             <div class="home"><a href="">Home</a></div>
         </div>
     </footer>
-
-    <div class="scroll-top" id="scroll-top">
-        <div class="up">
-            <img src="arrowTop.png" title="Croll up">
-        </div>
-    </div>
 </body>
 </html>

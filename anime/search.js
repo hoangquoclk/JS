@@ -5,7 +5,7 @@ const API_KEY = "276dac7f6ba919bdfd9d956cdcbd3d37";
 const URL_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=";
 
 const CHERVON_CLICK = document.querySelector('fa-chevron-left');
-const AD_INFO = document.querySelector('.ad-info');
+const AD_INFO = document.querySelectorAll('ad-info');
 const SLIDE_IMG = document.querySelectorAll('.img-ad');
 const SLIDE_CONTAINER = document.querySelector('.ad-info');
 const NEXT_BTN = document.querySelector('.fa-chevron-right');
@@ -13,16 +13,10 @@ const PREV_BTN = document.querySelector('.fa-chevron-left');
 const NUMBER_AD = document.querySelector('.number-ad');
 const MOVIE_IMGS = document.querySelectorAll('.row-5 .movie-img');
 const LIGHTBULB = document.querySelector('.fa-lightbulb');
-
-const NEWESTMOVIES_CLASS = document.querySelectorAll(".listNewestMovie");
-const TVSHOWHOT_CLASS = document.querySelectorAll(".list-tvShowHot");
-
-const NEWESTMOVIES = NEWESTMOVIES_CLASS[0];
-const BESTMOVIES = NEWESTMOVIES_CLASS[1];
-
-const TVSHOWHOT = TVSHOWHOT_CLASS[0];
-const ANIME = TVSHOWHOT_CLASS[1];
-
+const SEARCH = document.querySelector(".listSearch");
+const NEXTPAGE = document.getElementById("nextPage");
+const PREVPAGE = document.getElementById("prevPage");
+const SEARCH_TITLE = document.getElementById("search-title");
 
 let numberOfImages = SLIDE_IMG.length;
 // let slideWidth = SLIDE_IMG[0].clientWidth; // xét độ rộng của phần tử đầu tiên
@@ -32,35 +26,46 @@ const fa_bar_icon = document.querySelector('.fa-bars');
 
 // get movie
 
+var formSearch = document.getElementById("form-search");
+
+formSearch.addEventListener("submit", function() {
+    var searchText = document.getElementById("search-text").value;
+
+    localStorage.setItem("searchValue", searchText);
+});
+
+var inputSearch = localStorage.getItem("searchValue");
+localStorage.removeItem("searchValue");
+
 async function getMovies(url, category) {
     const resp = await fetch(url);
     const respData = await resp.json();
+    // điều kiện cho nút next
+    if(respData.results.length >= 20) {
+        NEXTPAGE.disabled = false;
+    }
+    else {
+        NEXTPAGE.disabled = true;
+    }
+    // nút prev
+    if(respData.page == 1) {
+        PREVPAGE.disabled = true;
+    }
+    else {
+        PREVPAGE.disabled = false;
+    }
+
+    if(respData.page == 1 && respData.results.length == 0) {
+        document.getElementById("page").innerText = "0 kết quả";
+    }
+    else {
+        updateNumPage();
+    }
 
     ShowMovies(respData.results, category);
-    
 }
 
-async function getMovies_2row(url, category) {
-    const resp = await fetch(url);
-    
-    const respData = await resp.json();
-    
-    ShowMovies_2row(respData.results,category);
-}
-
-// get newest movie
-let today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-today = yyyy + '/' + mm + '/' + dd;
-
-getMovies(URL_DISCOVER + API_KEY, NEWESTMOVIES);
-// get action movie
-getMovies(URL_DISCOVER + API_KEY + "&vote_average.gte=9", BESTMOVIES);
-// get TV hot show 
-getMovies_2row(URL_DISCOVER + API_KEY + "&page=2", TVSHOWHOT);
-getMovies_2row(URL_SEARCH + API_KEY + "&query=anime", ANIME);
+getMovies(URL_SEARCH + API_KEY + "&query=" + inputSearch + "", SEARCH);
 
 function ShowMovies(movies, category) {
     category.innerHTML = '';
@@ -118,61 +123,6 @@ function ShowMovies(movies, category) {
     });
 }
 
-function ShowMovies_2row(movies, category) {
-    category.innerHTML = '';
-    movies.forEach((movie) => {
-        const movieEl = document.createElement("div");
-        movieEl.classList.add("row-2");
-        movieEl.innerHTML = `
-            <div class="movie-img">
-                <img src="${IMG_PATH + movie.poster_path}" alt="">
-                <a href="">
-                    <div class="hover-img">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                </a>
-                <div class="point-rate" style="background-color: ${getPointRate(movie.vote_average)};">${movie.vote_average}</div>
-            </div>
-            
-
-            <div class="review-movie">
-                <a href="" class="movie-name">${movie.title}</a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="movie-time">
-                    <i class="fas fa-eye"></i>
-                    <span>${movie.popularity}</span>
-                </div>
-                <p class="description">${movie.overview}</p><br>
-                <small class="release-date">
-                    Release Date: 
-                    <strong>${movie.release_date}</strong>
-                </small><br>
-                <small class="release-date">
-                    Vote count: 
-                    <strong>${movie.vote_count}</strong>
-                </small><br>
-                <small class="release-date">
-                    Original Language: 
-                    <strong>${movie.original_language}</strong>
-                </small><hr>
-                <div class="trailer-detail">
-                    <i class="far fa-play-circle"></i>
-                    <small><a href="">Trailer</a></small>
-                    <i class="fas fa-info-circle"></i>
-                    <small><a href="">Detail</a></small>
-                </div>
-            </div>
-        `;
-        category.appendChild(movieEl);
-    });
-}
-
 function getPointRate(point) {
     if(point >= 8) {
         return "green";
@@ -183,108 +133,30 @@ function getPointRate(point) {
     else return "red";
 }
 
-// SEARCH 
-var formSearch = document.getElementById("form-search");
 
-formSearch.addEventListener("submit", function() {
-    var searchText = document.getElementById("search-text").value;
 
-    localStorage.setItem("searchValue", searchText);
+// click pagination
+let numPage = 1;
+
+SEARCH_TITLE.innerText = inputSearch;
+function updateNumPage() {
+    document.getElementById("page").innerText = "(Page " + numPage +")";
+}
+
+
+NEXTPAGE.addEventListener("click", function(){
+    numPage++;
+    getMovies(URL_SEARCH + API_KEY + "&query=" + inputSearch + "&page=" + numPage, SEARCH);
 });
 
-
-// ADVERTISEMENT
-async function getADs(url, category) {
-    const resp = await fetch(url);
-    
-    const respData = await resp.json();
-    
-    ShowADs(respData.results, category);
-    console.log(respData);
-}
-
-// getADs(URL_DISCOVER + API_KEY, AD_INFO);
-
-function ShowADs(ads, category) {
-    category.innerHTML = '';
-    // for(var i = 0; i < 5 ; i++) {
-    //     const ADEl = document.createElement("div");
-    //     ADEl.classList.add("img-ad");
-    //     ADEl.innerHTML = `        
-    //         <img src="${ads[i].backdrop_path}" alt="">
-    //         <a href="">Bố <span class="orange_word">già</span></a>
-    //         <p class="description">${ads[i].overview}</p>
-    //     `;
-    //     category.appendChild(ADEL);
-    // }
-    ads.forEach((ad) => {
-        const ADEl = document.createElement("div");
-        ADEl.classList.add("img-ad");
-        ADEl.innerHTML = `        
-            <img src="${IMG_PATH + ad.backdrop_path}" alt="">
-            <a href="">Bố <span class="orange_word">già</span></a>
-            <p class="description">${ad.overview}</p>
-        `;
-        category.appendChild(ADEl);
-    });
-}
-
-function init() {
-    // SLIDE_IMG[0] = 0%
-    // SLIDE_IMG[1] = 100%
-    // SLIDE_IMG[2] = 200%
-    SLIDE_IMG.forEach((img, i) => {
-        img.style.left = i * 100 + "%";
-
-    });
-
-    SLIDE_IMG[0].classList.add("active"); // thêm lớp active vào .img-ad
-    // create Number of Advertisement
-    createNumberAd();
-}
-
-init();
-
-function createNumberAd() {
-    for(let i = 0; i < numberOfImages; i++) {
-        const NUM = document.createElement("li"); // Tạo 1 phần tử li 
-        // NUM.classList.add("currentLi")
-        NUM.innerText = i + 1; // set số cho thẻ li
-        NUMBER_AD.appendChild(NUM); // bỏ phần tử trên vào ul
-
-        NUM.addEventListener("click", () => {
-            currentSlide = i;
-            goToSlide(currentSlide);
-        });
+PREVPAGE.addEventListener("click", function(){
+    if(numPage >= 2) {
+        numPage--;
+        getMovies(URL_SEARCH + API_KEY + "&query=" + inputSearch + "&page=" + numPage, SEARCH);
     }
-    NUMBER_AD.children[0].classList.add("active");
-}
-
-// click right button 
-NEXT_BTN.addEventListener("click", () => {
-    currentSlide++;
-    if(currentSlide == SLIDE_IMG.length) {
-        currentSlide = 0;  
-    }
-    goToSlide(currentSlide);
 });
 
-// click left button 
-PREV_BTN.addEventListener("click", () => {
-    currentSlide--;
-    if(currentSlide < 0) {
-        currentSlide = SLIDE_IMG.length - 1;  
-    }
-    goToSlide(currentSlide);
-});
-
-function goToSlide(slideNumber) {
-    SLIDE_CONTAINER.style.transform = "translateX(-" + 100 * slideNumber + "%)";
-    SLIDE_CONTAINER.style.transition = "transform 1.5s ease";
-
-    setActiveClass();
-}
-
+// set active class
 function setActiveClass() {
     let currentActive = document.querySelector('.img-ad.active');
     currentActive.classList.remove("active");
@@ -304,19 +176,7 @@ function setActiveClass() {
     //set animation on a
     let animEleA = document.querySelector(".img-ad.active a");
     animEleA.style.animation = "animation_a 2s ease";
-
-    
 }
-
-function autoChangeSlide() {
-    currentSlide++;
-    if(currentSlide == SLIDE_IMG.length) {
-        currentSlide = 0;  
-    }
-    goToSlide(currentSlide);
-}
-
-setInterval(autoChangeSlide, 5000);
 
 // GET POSITION OF REVIEW FILM
 function hoverReviewFilm() {
@@ -400,19 +260,4 @@ LIGHTBULB.addEventListener("click", () => {
     document.querySelector(".fa-search").classList.toggle("white");
     document.querySelector("body").style.background = url[i];
     i++;
-});
-
-// Croll to top
-
-$(window).scroll(function() {
-    if($(this).scrollTop() > 2000) {
-        $('#scroll-top').fadeIn();
-    }
-    else {
-        $('#scroll-top').fadeOut();
-    }
-});
-
-$('#scroll-top').click(function() {
-    $("html, body").animate({scrollTop: 0}, 2000);
 });

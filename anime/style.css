@@ -11,6 +11,7 @@ body {
     background: url(https://img.freepik.com/free-vector/white-background-with-triangle-patterns_1017-18410.jpg?size=626&ext=jpg);
     font-family: 'Poppins', sans-serif;
     margin: 0;
+    /* position: relative; */
 }
 
 .orange_word {
@@ -429,7 +430,7 @@ header .support .account .function li a:hover {
 
 .newestMovie-container .listNewestMovie .row-5 .movie-img img {
     width: 100%;
-    height: auto;
+    height: 400px;
     display: block;
     object-fit: cover;
     object-position: center;
@@ -645,7 +646,7 @@ header .support .account .function li a:hover {
 
 .tvShowHot-container .list-tvShowHot .row-2 .review-movie {
     width: 100%;
-    height: 100%;
+    height: 350px;
     padding: 1rem;
     background-color: transparent;
     display: block;
@@ -672,6 +673,8 @@ header .support .account .function li a:hover {
 }
 .tvShowHot-container .list-tvShowHot .row-2 .review-movie .description {
     font-size: 0.8rem;
+    height: 100px;
+    overflow: auto;
     color: #242424;
 }
 
@@ -923,6 +926,226 @@ footer .ended .home a {
         width: 45%;
         padding: 0;
     }
+}
+
+/* --------------- arrow hover top -------------- */
+.scroll-top {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 10%;
+    right: 1%;
+    z-index: 1;
+    background-color: rgb(0, 132, 255);
+    cursor: pointer;
+    display: none;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.scroll-top:hover {
+    background-color: rgb(0, 3, 204);
+}
+
+.scroll-top:active {
+    background-color: #fff;
+}
+
+.scroll-top .up {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-top .up img {
+    width: 50%;
+    height: 50%;
+}
+/* ------------ search ------------- */
+
+.newestMovie-container {
+    width: 90%;
+    margin: 0 auto 50px;
+}  
+
+.newestMovie-container .listSearch {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 22% 22% 22% 22%;
+    grid-gap: 25px;
+}
+
+.newestMovie-container .listSearch .row-5 {
+    position: relative;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, .5);
+    background-color: #fff;
+    margin-top: 50px;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img {
+    position: relative;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img img {
+    width: 100%;
+    height: 400px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img:hover .review-movie {
+    display: block;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .point-rate {
+    /* background-color: orange; */
+    border-radius: 50%;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .hover-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: orange;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    transition: 0.5s ease;
+    display: flex;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .hover-img i {
+    color: #fff;
+    margin: auto;
+    font-size: 2.5rem;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img:hover .hover-img {
+    opacity: 0.3;
+}
+
+.newestMovie-container .listSearch .row-5 a.movie-name {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #000;
+    margin: 5px;
+}
+
+.newestMovie-container .listSearch .row-5 a:hover {
+    color: orange;
+}
+
+.newestMovie-container .listSearch .row-5 small {
+    margin: 5px;
+    font-size: 0.8rem;
+    color: #b5b5b5;
+}
+
+.newestMovie-container .listSearch .row-5 small strong {
+    color: #fff;
+}
+
+/* ---------- Review movie ------------ */
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: none;
+    z-index: 1;
+    border-radius: 10px;
+    overflow: auto;
+}  
+
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie .movie-name {
+    color: #fff;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie .movie-name:hover {
+    color: orange;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie .trailer-detail i {
+    font-size: 1rem;
+    color: orange;
+}
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie .description {
+    font-size: 0.8rem;
+    color: #eeeeee;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie .movie-time {
+    color: orange;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie .trailer-detail a {
+    text-decoration: none;
+    color: #b5b5b5;
+    margin-left: 0.1rem;
+    margin-right: 1rem;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie .trailer-detail a:hover {
+    color: orange;
+}
+
+.newestMovie-container .listSearch .row-5 .movie-img .review-movie .point-rate{
+    background-color: orange;
+    border-radius: 50%;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+.newestMovie-container .pagination {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newestMovie-container .pagination button {
+    height: 50px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: orange;
+    border: none;
+    word-spacing: 3px;
+}
+
+.newestMovie-container .pagination button:hover {
+    color: #fff;
+}
+
+.newestMovie-container .pagination button:active {
+    color: rgb(107, 107, 107);
 }
 
 @media only screen and (max-width: 480px) {
