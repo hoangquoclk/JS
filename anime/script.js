@@ -381,10 +381,35 @@ var url = ["url(https://wallpaperaccess.com/full/400195.jpg)",
 var i = 0;
 var word_color = ["#fff","#000"];
 
+$("body").toggleClass(localStorage.lightOff);
+
+if (localStorage.lightOff == "lightOff" ) {
+    document.querySelectorAll(".menu .menu-list li a").forEach((menu) => {
+        menu.classList.toggle("white");
+    });
+
+    document.querySelectorAll(".title h1").forEach((title) => {
+        title.classList.toggle("white");
+    });
+
+    document.querySelector(".account").classList.toggle("white");
+    document.querySelector(".day-night").classList.toggle("white");
+    document.querySelector(".fa-search").classList.toggle("white");
+    document.querySelector("body").style.background = url[i];
+    i++;
+}
 
 LIGHTBULB.addEventListener("click", () => {
     if(i == url.length) {
         i = 0;
+    }
+
+    if (localStorage.lightOff != "lightOff" ) {
+        $('body').toggleClass("lightOff", true );
+        localStorage.lightOff = "lightOff";
+    } else {
+        $('body').toggleClass("lightOff", false );
+        localStorage.lightOff = "";
     }
 
     document.querySelectorAll(".menu .menu-list li a").forEach((menu) => {
