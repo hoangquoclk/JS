@@ -37,7 +37,6 @@ async function getMovies(url, category) {
     const respData = await resp.json();
 
     ShowMovies(respData.results, category);
-    
 }
 
 async function getMovies_2row(url, category) {
@@ -55,12 +54,17 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 today = yyyy + '/' + mm + '/' + dd;
 
+// window.onload = function() {
+//     getMovies(URL_DISCOVER + API_KEY, NEWESTMOVIES);
+// }
+
 getMovies(URL_DISCOVER + API_KEY, NEWESTMOVIES);
 // get action movie
 getMovies(URL_DISCOVER + API_KEY + "&vote_average.gte=9", BESTMOVIES);
 // get TV hot show 
 getMovies_2row(URL_DISCOVER + API_KEY + "&page=2", TVSHOWHOT);
-getMovies_2row(URL_SEARCH + API_KEY + "&query=anime", ANIME);
+getMovies_2row(URL_SEARCH + API_KEY + "&query=anime", ANIME);;
+
 
 function ShowMovies(movies, category) {
     category.innerHTML = '';
@@ -116,6 +120,7 @@ function ShowMovies(movies, category) {
         `;
         category.appendChild(movieEl);
     });
+    console.log(NEWESTMOVIES_CLASS);
 }
 
 function ShowMovies_2row(movies, category) {
@@ -207,16 +212,6 @@ async function getADs(url, category) {
 
 function ShowADs(ads, category) {
     category.innerHTML = '';
-    // for(var i = 0; i < 5 ; i++) {
-    //     const ADEl = document.createElement("div");
-    //     ADEl.classList.add("img-ad");
-    //     ADEl.innerHTML = `        
-    //         <img src="${ads[i].backdrop_path}" alt="">
-    //         <a href="">Bố <span class="orange_word">già</span></a>
-    //         <p class="description">${ads[i].overview}</p>
-    //     `;
-    //     category.appendChild(ADEL);
-    // }
     ads.forEach((ad) => {
         const ADEl = document.createElement("div");
         ADEl.classList.add("img-ad");
@@ -345,39 +340,15 @@ function hoverReviewFilm() {
         }
     });
 }
+console.log("ảnh" + MOVIE_IMGS.length);
 
-window.addEventListener("resize", function(){
-    MOVIE_IMGS.forEach((mov) => {
-        let widthWindow = window.innerWidth;
-        let widthPosRight = mov.getBoundingClientRect().right;
-        let widthPosLeft = mov.getBoundingClientRect().left; // get the right position
-        let widthEle = mov.getBoundingClientRect().width; // get width the element
-        // let widthEleReview = widthEle * 1.2; 
-        
-        if(widthWindow - widthPosRight < widthEle && widthPosLeft < widthEle) {
-            reviewMovie = mov.querySelector('.review-movie');
-            reviewMovie.style.top = "100%";
-            reviewMovie.style.left = "0%";
-        }
-
-        else if(widthWindow - widthPosRight < widthEle) {
-            reviewMovie = mov.querySelector('.review-movie');
-            reviewMovie.style.left = "-100%";
-            reviewMovie.style.top = "0%";
-        }
-        else {
-            reviewMovie = mov.querySelector('.review-movie');
-            reviewMovie.style.left = "100%";
-            reviewMovie.style.top = "0%";
-        }
-    });
-});
+window.addEventListener("resize", hoverReviewFilm);
 hoverReviewFilm();
 
 // click to turn on/ off lightbulb
 
-var url = ["url(https://wallpaperaccess.com/full/400195.jpg)",
-    "url(https://img.freepik.com/free-vector/white-background-with-triangle-patterns_1017-18410.jpg?size=626&ext=jpg)"];
+var url = ["url(backgroundBlack.jpg)",
+    "url(backgroundWhite.jpg)"];
 var i = 0;
 var word_color = ["#fff","#000"];
 
