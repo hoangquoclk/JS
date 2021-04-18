@@ -6,12 +6,11 @@ const URL_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=";
 
 const CHERVON_CLICK = document.querySelector('fa-chevron-left');
 const AD_INFO = document.querySelector('.ad-info');
-const SLIDE_IMG = document.querySelectorAll('.img-ad');
+const SLIDE_IMG = document.querySelectorAll('.img-ad'); // 1 cái
 const SLIDE_CONTAINER = document.querySelector('.ad-info');
 const NEXT_BTN = document.querySelector('.fa-chevron-right');
 const PREV_BTN = document.querySelector('.fa-chevron-left');
-const NUMBER_AD = document.querySelector('.number-ad');
-const MOVIE_IMGS = document.querySelectorAll('.row-5 .movie-img');
+const NUMBER_AD = document.querySelector('.number-ad'); // 2 cái
 const LIGHTBULB = document.querySelector('.fa-lightbulb');
 
 const NEWESTMOVIES_CLASS = document.querySelectorAll(".listNewestMovie");
@@ -24,7 +23,7 @@ const TVSHOWHOT = TVSHOWHOT_CLASS[0];
 const ANIME = TVSHOWHOT_CLASS[1];
 
 
-let numberOfImages = SLIDE_IMG.length;
+let numberOfImages = SLIDE_IMG.length; // 3 cái
 // let slideWidth = SLIDE_IMG[0].clientWidth; // xét độ rộng của phần tử đầu tiên
 let currentSlide = 0;
 
@@ -65,6 +64,7 @@ getMovies(URL_DISCOVER + API_KEY + "&vote_average.gte=9", BESTMOVIES);
 getMovies_2row(URL_DISCOVER + API_KEY + "&page=2", TVSHOWHOT);
 getMovies_2row(URL_SEARCH + API_KEY + "&query=anime", ANIME);;
 
+const movie_not_hidden = "https://www.psuunderground.com/wp-content/uploads/2017/02/Movies.jpg";
 
 function ShowMovies(movies, category) {
     category.innerHTML = '';
@@ -73,7 +73,8 @@ function ShowMovies(movies, category) {
         movieEl.classList.add("row-5");
         movieEl.innerHTML = `
             <div class="movie-img">
-                <img src="${IMG_PATH + movie.poster_path}" alt="">
+                <img src="${movie.poster_path ? IMG_PATH + movie.poster_path : 
+                   'error.jpg'}" alt="">
                 <div class="review-movie">
                     <a href="" class="movie-name">${movie.title}</a>
                     <div class="rating">
@@ -120,7 +121,9 @@ function ShowMovies(movies, category) {
         `;
         category.appendChild(movieEl);
     });
-    console.log(NEWESTMOVIES_CLASS);
+    const MOVIE_IMGS = document.querySelectorAll('.row-5 .movie-img');
+    hoverReviewFilm(MOVIE_IMGS);
+    window.addEventListener("resize", () => hoverReviewFilm(MOVIE_IMGS));
 }
 
 function ShowMovies_2row(movies, category) {
@@ -130,7 +133,8 @@ function ShowMovies_2row(movies, category) {
         movieEl.classList.add("row-2");
         movieEl.innerHTML = `
             <div class="movie-img">
-                <img src="${IMG_PATH + movie.poster_path}" alt="">
+                <img src="${movie.poster_path ? IMG_PATH + movie.poster_path : 
+                    'error.jpg'}" alt="">
                 <a href="">
                     <div class="hover-img">
                         <i class="fas fa-play-circle"></i>
@@ -178,6 +182,8 @@ function ShowMovies_2row(movies, category) {
     });
 }
 
+
+
 function getPointRate(point) {
     if(point >= 8) {
         return "green";
@@ -217,7 +223,9 @@ function ShowADs(ads, category) {
         ADEl.classList.add("img-ad");
         ADEl.innerHTML = `        
             <img src="${IMG_PATH + ad.backdrop_path}" alt="">
-            <a href="">Bố <span class="orange_word">già</span></a>
+            <a href="">
+                ${ad.title}
+            </a>
             <p class="description">${ad.overview}</p>
         `;
         category.appendChild(ADEl);
@@ -238,7 +246,7 @@ function init() {
     createNumberAd();
 }
 
-init();
+init(); // gọi lại khi bỏ SLIDE_IMGS vào 
 
 function createNumberAd() {
     for(let i = 0; i < numberOfImages; i++) {
@@ -314,8 +322,8 @@ function autoChangeSlide() {
 setInterval(autoChangeSlide, 5000);
 
 // GET POSITION OF REVIEW FILM
-function hoverReviewFilm() {
-    MOVIE_IMGS.forEach((mov) => {
+function hoverReviewFilm(ITEMS) {
+    ITEMS.forEach((mov) => {
         let widthWindow = window.innerWidth;
         let widthPosRight = mov.getBoundingClientRect().right;
         let widthPosLeft = mov.getBoundingClientRect().left; // get the right position
@@ -340,10 +348,6 @@ function hoverReviewFilm() {
         }
     });
 }
-console.log("ảnh" + MOVIE_IMGS.length);
-
-window.addEventListener("resize", hoverReviewFilm);
-hoverReviewFilm();
 
 // click to turn on/ off lightbulb
 

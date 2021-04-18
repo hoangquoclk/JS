@@ -1068,6 +1068,11 @@ footer .ended .home a {
         grid-gap: 15px;
     }
 
+    .newestMovie-container .listSearch {
+        grid-template-columns: 40% 40%;
+        grid-gap: 15px;
+    }
+
     .tvShowHot-container .list-tvShowHot {
         justify-content: space-around;
         grid-template-columns: 80%;
@@ -1128,6 +1133,11 @@ footer .ended .home a {
     }
 
     .newestMovie-container .listNewestMovie {
+        grid-template-columns: 45% 45%;
+        grid-gap: 10px;
+    }
+
+    .newestMovie-container .listSearch {
         grid-template-columns: 45% 45%;
         grid-gap: 10px;
     }
@@ -1213,6 +1223,9 @@ footer .ended .home a {
         grid-template-columns: 80%;
     }
 
+    .newestMovie-container .listSearch {
+        grid-template-columns: 80%;
+    }
 
     footer .info .info-detail img {
         margin-right: 0px;

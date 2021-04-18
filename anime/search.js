@@ -11,7 +11,6 @@ const SLIDE_CONTAINER = document.querySelector('.ad-info');
 const NEXT_BTN = document.querySelector('.fa-chevron-right');
 const PREV_BTN = document.querySelector('.fa-chevron-left');
 const NUMBER_AD = document.querySelector('.number-ad');
-const MOVIE_IMGS = document.querySelectorAll('.row-5 .movie-img');
 const LIGHTBULB = document.querySelector('.fa-lightbulb');
 const SEARCH = document.querySelector(".listSearch");
 const NEXTPAGE = document.getElementById("nextPage");
@@ -74,7 +73,8 @@ function ShowMovies(movies, category) {
         movieEl.classList.add("row-5");
         movieEl.innerHTML = `
             <div class="movie-img">
-                <img src="${IMG_PATH + movie.poster_path}" alt="">
+                <img src="${movie.poster_path ? IMG_PATH + movie.poster_path : 
+                    'error.jpg'}" alt="">
                 <div class="review-movie">
                     <a href="" class="movie-name">${movie.title}</a>
                     <div class="rating">
@@ -121,6 +121,9 @@ function ShowMovies(movies, category) {
         `;
         category.appendChild(movieEl);
     });
+    const MOVIE_IMGS = document.querySelectorAll('.row-5 .movie-img');
+    hoverReviewFilm(MOVIE_IMGS);
+    window.addEventListener("resize", () => hoverReviewFilm(MOVIE_IMGS));
 }
 
 function getPointRate(point) {
@@ -179,8 +182,8 @@ function setActiveClass() {
 }
 
 // GET POSITION OF REVIEW FILM
-function hoverReviewFilm() {
-    MOVIE_IMGS.forEach((mov) => {
+function hoverReviewFilm(ITEMS) {
+    ITEMS.forEach((mov) => {
         let widthWindow = window.innerWidth;
         let widthPosRight = mov.getBoundingClientRect().right;
         let widthPosLeft = mov.getBoundingClientRect().left; // get the right position
@@ -205,34 +208,6 @@ function hoverReviewFilm() {
         }
     });
 }
-
-window.addEventListener("resize", function(){
-    MOVIE_IMGS.forEach((mov) => {
-        let widthWindow = window.innerWidth;
-        let widthPosRight = mov.getBoundingClientRect().right;
-        let widthPosLeft = mov.getBoundingClientRect().left; // get the right position
-        let widthEle = mov.getBoundingClientRect().width; // get width the element
-        // let widthEleReview = widthEle * 1.2; 
-        
-        if(widthWindow - widthPosRight < widthEle && widthPosLeft < widthEle) {
-            reviewMovie = mov.querySelector('.review-movie');
-            reviewMovie.style.top = "100%";
-            reviewMovie.style.left = "0%";
-        }
-
-        else if(widthWindow - widthPosRight < widthEle) {
-            reviewMovie = mov.querySelector('.review-movie');
-            reviewMovie.style.left = "-100%";
-            reviewMovie.style.top = "0%";
-        }
-        else {
-            reviewMovie = mov.querySelector('.review-movie');
-            reviewMovie.style.left = "100%";
-            reviewMovie.style.top = "0%";
-        }
-    });
-});
-hoverReviewFilm();
 
 // click to turn on/ off lightbulb
 

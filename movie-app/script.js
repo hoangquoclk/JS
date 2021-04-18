@@ -48,7 +48,7 @@ function showMovies(movies) {
         = movie;
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
-
+        
         movieEl.innerHTML = ` 
             <img src="${IMGPATH + poster_path}"
             alt="${title}">  

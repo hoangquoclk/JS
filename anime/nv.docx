@@ -1,5 +1,4 @@
 Nhiệm vụ:
-1. phân trang cho search
-2. hover không overflow.
-3. chạy quảng cáo hình ảnh
-4. dùng chung 1 file js
+1. Làm trang detail movie
+2. chạy quảng cáo hình ảnh 
+// đã biết cách làm nhưng tốn thời gian và hình ảnh tải về không được HD cho lắm.
